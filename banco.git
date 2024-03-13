@@ -1,0 +1,89 @@
+-- **1. Criar tabela "alunos"**
+CREATE TABLE alunos (
+    id INT PRIMARY KEY,
+    nome TEXT,
+    idade INT,
+    curso TEXT
+);
+
+-- **2. Inserir registros**
+INSERT INTO alunos (id, nome, idade, curso) VALUES
+(1, 'João', 22, 'Engenharia'),
+(2, 'Maria', 19, 'Ciências da Computação'),
+(3, 'Pedro', 25, 'Medicina'),
+(4, 'Ana', 21, 'Arquitetura'),
+(5, 'Carlos', 23, 'Engenharia');
+
+-- **3. Consultas Básicas:**
+-- a) Selecionar todos os registros da tabela "alunos":
+SELECT * FROM alunos;
+
+-- b) Selecionar o nome e a idade dos alunos com mais de 20 anos:
+SELECT nome, idade FROM alunos WHERE idade > 20;
+
+-- c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética:
+SELECT * FROM alunos WHERE curso = 'Engenharia' ORDER BY nome;
+
+-- d) Contar o número total de alunos na tabela:
+SELECT COUNT(*) AS total_alunos FROM alunos;
+
+-- **4. Atualização e Remoção:**
+-- a) Atualizar a idade de um aluno específico:
+UPDATE alunos SET idade = 24 WHERE id = 1;
+
+-- b) Remover um aluno pelo seu ID:
+DELETE FROM alunos WHERE id = 3;
+
+-- **5. Criar a tabela "clientes" e inserir registros:**
+-- Criar tabela "clientes"
+CREATE TABLE clientes (
+    id INT PRIMARY KEY,
+    nome TEXT,
+    idade INT,
+    saldo FLOAT
+);
+
+-- Inserir registros
+INSERT INTO clientes (id, nome, idade, saldo) VALUES
+(1, 'Fernanda', 35, 1200.50),
+(2, 'Rafael', 28, 800.75),
+(3, 'Luísa', 40, 1500.00),
+(4, 'Daniel', 32, 1100.25),
+(5, 'Mariana', 27, 900.80);
+
+--**6. Consultas e Funções Agregadas:**
+-- a) Selecionar o nome e a idade dos clientes com idade superior a 30 anos:
+SELECT nome, idade FROM clientes WHERE idade > 30;
+
+-- b) Calcular o saldo médio dos clientes:
+SELECT AVG(saldo) AS saldo_medio FROM clientes;
+
+-- c) Encontrar o cliente com o saldo máximo:
+SELECT * FROM clientes ORDER BY saldo DESC LIMIT 1;
+
+-- d) Contar quantos clientes têm saldo acima de 1000:
+SELECT COUNT(*) AS clientes_saldo_acima_1000 FROM clientes WHERE saldo > 1000;
+
+-- **7. Atualização e Remoção com Condições:**
+-- a) Atualizar o saldo de um cliente específico:
+UPDATE clientes SET saldo = 1300.00 WHERE id = 2;
+
+-- b) Remover um cliente pelo seu ID:
+DELETE FROM clientes WHERE id = 4;
+
+-- **8. Junção de Tabelas:**
+-- Criar tabela "compras"
+CREATE TABLE compras (
+    id INT PRIMARY KEY,
+    cliente_id INT,
+    produto TEXT,
+    valor REAL
+);
+
+-- Inserir registros
+INSERT INTO compras (id, cliente_id, produto, valor) VALUES
+(1, 1, 'Notebook', 1200.00),
+(2, 3, 'Smartphone', 800.50),
+(3, 2, 'Tablet', 500.75),
+(4, 4, 'Câmera', 300.25),
+(5, 5, 'Monitor', 450.80);
